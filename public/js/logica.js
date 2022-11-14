@@ -46,12 +46,12 @@ mensaje.addEventListener("keydown", function(){
 
 socket.on('chat:mensaje', function(data){
   salida.innerHTML+= 
-    '<b>' +data.usuario+ '</b> ✉︎ ' + data.mensaje + '<br>'
+    '<b>' +safe(data.usuario)+ '</b> ✉︎ ' + safe(data.mensaje) + '<br>'
   avisos.innerHTML=''
 });
 
 socket.on('chat:escribiendo', function(data){
-  avisos.innerHTML="<p><em>"+data+"</em> 📠</p>"
+  avisos.innerHTML="<p><em>"+safe(data)+"</em> 📠</p>"
 });
 
 socket.on('socket_desconectado', function(data){
@@ -66,3 +66,7 @@ socket.on('socket_conectado', function(data){
   console.log(data)
   notificaciones.innerHTML+=JSON.stringify(data)
 });
+
+function safe(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
