@@ -15,6 +15,15 @@ mensaje.hidden=true
 boton.hidden=true
 
 namebtn.addEventListener("click", function(){
+  sendName()
+})
+usuario.addEventListener("keydown", function (e){
+  e = e || window.event;
+  if(e.keyCode == 13) {
+    sendName()
+  }
+})
+function sendName(){
   nombre=usuario.value
   if(nombre!=""){
     usuario.hidden=true
@@ -24,8 +33,12 @@ namebtn.addEventListener("click", function(){
   }else{
     alert("NOMBRE REQUERIDO")
   }
-})
+}
+
 boton.addEventListener("click", function(){
+  send()
+})
+function send(){
   var data={
     mensaje: mensaje.value,
     usuario: nombre
@@ -37,9 +50,12 @@ boton.addEventListener("click", function(){
     mensaje.value=""
     socket.emit("chat:mensaje", data)
   }
-})
-
-mensaje.addEventListener("keydown", function(){
+}
+mensaje.addEventListener("keydown", function (e){
+  e = e || window.event;
+  if(e.keyCode == 13) {
+    send()
+  }
   socket.emit("chat:escribiendo", nombre)
 })
 
