@@ -3,19 +3,36 @@ let usuario = document.getElementById("usuario")
 let salida = document.getElementById("salida")
 let notificaciones = document.getElementById("notificaciones")
 let boton = document.getElementById("enviar")
+let namebtn = document.getElementById("namebtn")
 //Crear una instancia de SocketIO, recibe como parámetro el url del servidor al que se conectará
 var socket = io.connect('https://chat-almita.herokuapp.com');
 
 var clientes=[]
 
+var nombre=""
+
+mensaje.hidden=true
+boton.hidden=true
+
+namebtn.addEventListener("click", function(){
+  nombre=usuario.value
+  if(nombre!=""){
+    usuario.hidden=true
+    namebtn.hidden=true
+    mensaje.hidden=false
+    boton.hidden=false
+  }else{
+    alert("NOMBRE REQUERIDO")
+  }
+})
 boton.addEventListener("click", function(){
   var data={
     mensaje: mensaje.value,
-    usuario: usuario.value
+    usuario: nombre
   }
 
-  if(mensaje.value === "" || usuario.value === ""){
-    alert("USUARIO Y MENSAJE REQUERIDOS")
+  if(mensaje.value === "" || nombre === ""){
+    alert("MENSAJE REQUERIDO")
   }else{
     mensaje.value=""
     socket.emit("chat:mensaje", data)
@@ -23,7 +40,7 @@ boton.addEventListener("click", function(){
 })
 
 mensaje.addEventListener("keydown", function(){
-  socket.emit("chat:escribiendo", usuario.value)
+  socket.emit("chat:escribiendo", nombre)
 })
 
 
