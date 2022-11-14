@@ -29,7 +29,7 @@ mensaje.addEventListener("keydown", function(){
 
 socket.on('chat:mensaje', function(data){
   salida.innerHTML+= 
-    '<b>' +data.usuario+ '</b>:' + data.mensaje + '<br>'
+    '<b>' +data.usuario+ '</b> : ' + data.mensaje + '<br>'
   avisos.innerHTML=''
 });
 
