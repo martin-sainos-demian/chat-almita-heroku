@@ -1,7 +1,17 @@
 html {
-    background-color: #e0a0ff
+    background-color: #e0a0ff;
+    font-family: 'Consolas';
 }
 
 #name{
-    color:#a090d0
+    color:#a050d0;
+}
+
+#usuarios{
+    color:#a065a0;
+}
+
+#enviar{
+    border-color: #102090;
+    background-color: #40c0e0;
 }
