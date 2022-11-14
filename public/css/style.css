@@ -1,6 +1,12 @@
+@font-face {
+    font-family: og-emoji;
+    src: url(./fonts/og-dcm-emoji.ttf);
+  }
+
 html {
     background-color: #e0a0ff;
-    font-family: 'Consolas';
+    font-family: 'Consolas', 'og-emoji';
+    text-align: center;
 }
 
 #name{
@@ -13,12 +19,15 @@ html {
 
 #usuario{
     background-color: #d0c0f0;
+    font-family: 'Consolas', 'og-emoji';
 }
 #mensaje{
     background-color: #f0c0d0;
+    font-family: 'Consolas', 'og-emoji';
 }
 
 #enviar{
     border-color: #102090;
     background-color: #40c0e0;
+    font-family: 'Consolas', 'og-emoji';
 }

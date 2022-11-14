@@ -15,7 +15,7 @@ boton.addEventListener("click", function(){
   }
 
   if(mensaje.value === "" || usuario.value === ""){
-    alert("se requiere un mensahe y un usuario para poder infresar al chat")
+    alert("USUARIO Y MENSAJE REQUERIDOS")
   }else{
     mensaje.value=""
     socket.emit("chat:mensaje", data)
@@ -29,12 +29,12 @@ mensaje.addEventListener("keydown", function(){
 
 socket.on('chat:mensaje', function(data){
   salida.innerHTML+= 
-    '<b>' +data.usuario+ '</b> : ' + data.mensaje + '<br>'
+    '<b>' +data.usuario+ '</b> ✉︎ ' + data.mensaje + '<br>'
   avisos.innerHTML=''
 });
 
 socket.on('chat:escribiendo', function(data){
-  avisos.innerHTML="<p><em>"+data+"</em> está escribiendo...</p>"
+  avisos.innerHTML="<p><em>"+data+"</em> 📠</p>"
 });
 
 socket.on('socket_desconectado', function(data){
